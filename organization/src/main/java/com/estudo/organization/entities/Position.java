@@ -17,6 +17,6 @@ public class Position {
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "department_id")
     private Department department;
 }

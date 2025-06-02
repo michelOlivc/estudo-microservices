@@ -16,6 +16,6 @@ public class Employee {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "position_id")
     private Position position;
 }
