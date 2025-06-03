@@ -1,6 +1,6 @@
 package com.estudo.organization.services;
 
-import com.estudo.organization.exception.EntityNotFoundException;
+import com.estudo.organization.errors.exceptions.EntityNotFoundException;
 import com.estudo.organization.repositories.AbstractRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +52,7 @@ public abstract class AbstractService<T, D, ID> {
             return mapEntityToDto(optional.get());
         }
 
-        final String className = ENTITY_TYPE.getTypeName();
-        // final String className = ENTITY_TYPE.getClass().getName();
+        final String className = ((Class) ENTITY_TYPE).getSimpleName();
 
         throw new EntityNotFoundException(className, id.toString());
     }
