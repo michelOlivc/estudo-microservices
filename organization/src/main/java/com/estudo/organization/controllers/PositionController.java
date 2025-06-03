@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("positions")
+@RequestMapping("api/positions")
 public class PositionController extends AbstractController<PositionDTO, Long> {
 
     public PositionController(PositionService service) {

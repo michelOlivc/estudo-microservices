@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("departments")
+@RequestMapping("api/departments")
 public class DepartmentController extends AbstractController<DepartmentDTO, Long> {
 
     public DepartmentController(DepartmentService service) {
