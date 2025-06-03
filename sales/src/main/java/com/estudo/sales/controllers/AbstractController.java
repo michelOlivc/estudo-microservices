@@ -1,6 +1,6 @@
 package com.estudo.sales.controllers;
 
-import com.estudo.organization.services.AbstractService;
+import com.estudo.sales.services.AbstractService;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -2,53 +2,76 @@ package com.estudo.organization.services;
 
 import com.estudo.organization.exception.EntityNotFoundException;
 import com.estudo.organization.repositories.AbstractRepository;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.data.repository.NoRepositoryBean;
 
 import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class AbstractService<T, ID> {
+public abstract class AbstractService<T, D, ID> {
+
+    final private Type ENTITY_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+    final private Type DTO_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 
     protected AbstractRepository<T, ID> repository;
+
+    @Autowired
+    protected ModelMapper mapper;
 
     public AbstractService(final AbstractRepository<T, ID> repository) {
         this.repository = repository;
     }
 
-    public List<T> findAll() {
-        return repository.findAll();
+    public List<D> findAll() {
+        return repository.findAll().stream()
+                .map(this::mapEntityToDto)
+                .toList();
     }
 
-    public Page<T> findAll(final String sortBy, final String sortDirection, final int page, final int size) {
+    public Page<D> findAll(final String sortBy, final String sortDirection, final int page, final int size) {
         final Sort sort = Sort.by(sortDirection, sortBy);
         final Pageable pageable = PageRequest.of(page, size, sort);
-        return repository.findAll(pageable);
+        final Page<T> entityPage = repository.findAll(pageable);
+
+        final List<D> dtoList = entityPage.getContent().stream()
+                .map(this::mapEntityToDto)
+                .toList();
+
+        return new PageImpl<>(dtoList, pageable, entityPage.getTotalElements());
     }
 
-    public T findById(final ID id) {
+    public D findById(final ID id) {
         final Optional<T> optional = repository.findById(id);
 
         if (optional.isPresent()) {
-            return optional.get();
+            return mapEntityToDto(optional.get());
         }
 
-        final ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-        final String className = type.getActualTypeArguments()[0].getClass().getName();
+        final String className = ENTITY_TYPE.getTypeName();
+        // final String className = ENTITY_TYPE.getClass().getName();
 
         throw new EntityNotFoundException(className, id.toString());
     }
 
-    public T save(final T entity) {
-        return repository.save(entity);
+    public D save(final D dto) {
+        final T entity = repository.save(mapDtoToEntity(dto));
+        return mapEntityToDto(entity);
     }
 
     public void deleteById(final ID id) {
         repository.deleteById(id);
+    }
+
+    private D mapEntityToDto(T entity) {
+        return mapper.map(entity, DTO_TYPE);
+    }
+
+    private T mapDtoToEntity(D dto) {
+        return mapper.map(dto, ENTITY_TYPE);
     }
 }

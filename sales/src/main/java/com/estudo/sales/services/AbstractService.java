@@ -1,7 +1,7 @@
 package com.estudo.sales.services;
 
-import com.estudo.organization.exception.EntityNotFoundException;
-import com.estudo.organization.repositories.AbstractRepository;
+import com.estudo.sales.exception.EntityNotFoundException;
+import com.estudo.sales.repositories.AbstractRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
