@@ -15,7 +15,7 @@ public class ControllerExceptionHandler {
                                                                        final WebRequest request) {
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.NOT_FOUND.value())
-                .message("Recurso não encontrado com os parâmetros informados.")
+                .message("Resource not found with the informed parameters.")
                 .details(request.getDescription(false))
                 .path(request.getContextPath())
                 .build();
@@ -27,7 +27,7 @@ public class ControllerExceptionHandler {
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(final Exception e, final WebRequest request) {
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .message("Um erro inesperado ocorreu.")
+                .message("An unexpected error happened. Contact the administrator.")
                 .path(request.getContextPath())
                 .build();
 
