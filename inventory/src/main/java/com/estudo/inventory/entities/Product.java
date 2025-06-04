@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -25,5 +27,6 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    private BigDecimal price;
     private boolean active;
 }
