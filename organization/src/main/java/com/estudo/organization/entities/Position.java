@@ -9,11 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Position {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class Position extends AuditableEntity<Long> {
     @Column(unique = true)
     private String name;
 

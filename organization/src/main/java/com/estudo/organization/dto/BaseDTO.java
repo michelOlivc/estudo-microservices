@@ -7,8 +7,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PositionDTO extends AuditableDTO<Long> {
-    private String name;
-    private String description;
-    private DepartmentDTO department;
+public abstract class BaseDTO<ID> {
+    private ID id;
 }

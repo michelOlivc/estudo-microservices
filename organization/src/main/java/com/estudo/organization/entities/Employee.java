@@ -9,10 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Employee extends AuditableEntity<Long> {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -9,26 +9,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @NoRepositoryBean
-public abstract class BaseController<T, ID> {
+public abstract class BaseController<D, ID> {
 
-    protected BaseService<T, ID> service;
+    protected BaseService<?, D, ID> service;
 
-    public BaseController(final BaseService<T, ID> service) {
+    public BaseController(final BaseService<?, D, ID> service) {
         this.service = service;
     }
 
     @GetMapping
-    public ResponseEntity<List<T>> findAll() {
+    public ResponseEntity<List<D>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<T> findById(@PathVariable final ID id) {
+    public ResponseEntity<D> findById(@PathVariable final ID id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<T> save(@RequestBody final T entity) {
+    public ResponseEntity<D> save(@RequestBody final D entity) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(entity));
     }
 

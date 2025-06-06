@@ -1,4 +1,4 @@
-package com.estudo.sales.exception;
+package com.estudo.sales.errors.exceptions;
 
 public class EntityNotFoundException extends RuntimeException {
     public EntityNotFoundException(String entityName, String id) {

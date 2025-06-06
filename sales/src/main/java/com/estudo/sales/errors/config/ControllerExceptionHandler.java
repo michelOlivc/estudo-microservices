@@ -1,6 +1,6 @@
-package com.estudo.accounting.errors.config;
+package com.estudo.sales.errors.config;
 
-import com.estudo.accounting.errors.exceptions.EntityNotFoundException;
+import com.estudo.sales.errors.exceptions.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,9 +13,6 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(final EntityNotFoundException e,
                                                                        final WebRequest request) {
-
-        e.printStackTrace();
-
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.NOT_FOUND.value())
                 .message("Resource not found with the informed parameters.")
@@ -28,9 +25,6 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleException(final Exception e, final WebRequest request) {
-
-        e.printStackTrace();
-
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message("An unexpected error happened. Contact the administrator.")

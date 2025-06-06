@@ -26,7 +26,7 @@ public class ControllerExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleEntityNotFoundException(final Exception e, final WebRequest request) {
+    public ResponseEntity<ErrorResponse> handleException(final Exception e, final WebRequest request) {
 
         e.printStackTrace();
 

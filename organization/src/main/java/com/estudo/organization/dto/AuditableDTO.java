@@ -4,11 +4,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class PositionDTO extends AuditableDTO<Long> {
-    private String name;
-    private String description;
-    private DepartmentDTO department;
+public abstract class AuditableDTO<ID> extends BaseDTO<ID> {
+    private Instant lastModifiedAt;
 }

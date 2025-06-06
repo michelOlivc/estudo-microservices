@@ -1,7 +1,8 @@
-package com.estudo.organization.services;
+package com.estudo.accounting.services;
 
-import com.estudo.organization.errors.exceptions.EntityNotFoundException;
-import com.estudo.organization.repositories.BaseRepository;
+import com.estudo.accounting.entities.BaseEntity;
+import com.estudo.accounting.repositories.BaseRepository;
+import com.estudo.accounting.errors.exceptions.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class BaseService<T, D, ID> {
+public abstract class BaseService<T extends BaseEntity<ID>, D, ID> {
 
     final private Type ENTITY_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     final private Type DTO_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
@@ -57,9 +58,14 @@ public abstract class BaseService<T, D, ID> {
         throw new EntityNotFoundException(className, id.toString());
     }
 
+    public void beforeSave(T entity) {}
+
     public D save(final D dto) {
-        final T entity = repository.save(mapDtoToEntity(dto));
-        return mapEntityToDto(entity);
+        final T entity = mapDtoToEntity(dto);
+
+        this.beforeSave(entity);
+
+        return mapEntityToDto(repository.save(entity));
     }
 
     public void deleteById(final ID id) {
