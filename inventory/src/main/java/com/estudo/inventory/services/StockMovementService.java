@@ -6,7 +6,7 @@ import com.estudo.inventory.repositories.StockMovementRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class StockMovementService extends AbstractService<StockMovement, StockMovementDTO, Long> {
+public class StockMovementService extends BaseService<StockMovement, StockMovementDTO, Long> {
 
     public StockMovementService(StockMovementRepository repository) {
         super(repository);

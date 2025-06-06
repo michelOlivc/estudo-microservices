@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/categories")
-public class CategoryController extends AbstractController<CategoryDTO, Long> {
+public class CategoryController extends BaseController<CategoryDTO, Long> {
 
     public CategoryController(CategoryService service) {
         super(service);

@@ -6,7 +6,7 @@ import com.estudo.organization.repositories.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DepartmentService extends AbstractService<Department, DepartmentDTO, Long> {
+public class DepartmentService extends BaseService<Department, DepartmentDTO, Long> {
 
     public DepartmentService(DepartmentRepository repository) {
         super(repository);

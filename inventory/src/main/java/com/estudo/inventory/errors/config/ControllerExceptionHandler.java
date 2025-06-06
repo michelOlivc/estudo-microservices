@@ -13,6 +13,8 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(final EntityNotFoundException e,
                                                                        final WebRequest request) {
+        e.printStackTrace();
+
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.NOT_FOUND.value())
                 .message("Resource not found with the informed parameters.")
@@ -25,6 +27,9 @@ public class ControllerExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleEntityNotFoundException(final Exception e, final WebRequest request) {
+
+        e.printStackTrace();
+
         final ErrorResponse response = ErrorResponse.builder()
                 .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .message("An unexpected error happened. Contact the administrator.")

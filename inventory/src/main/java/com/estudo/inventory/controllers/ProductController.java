@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/products")
-public class ProductController extends AbstractController<ProductDTO, Long> {
+public class ProductController extends BaseController<ProductDTO, Long> {
 
     public ProductController(ProductService service) {
         super(service);

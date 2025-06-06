@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/employees")
-public class EmployeeController extends AbstractController<EmployeeDTO, Long> {
+public class EmployeeController extends BaseController<EmployeeDTO, Long> {
 
     public EmployeeController(EmployeeService service) {
         super(service);

@@ -4,5 +4,5 @@ import com.estudo.organization.entities.Position;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PositionRepository extends AbstractRepository<Position, Long> {
+public interface PositionRepository extends BaseRepository<Position, Long> {
 }

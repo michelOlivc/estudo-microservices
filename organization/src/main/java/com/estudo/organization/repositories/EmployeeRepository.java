@@ -4,5 +4,5 @@ import com.estudo.organization.entities.Employee;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface EmployeeRepository extends AbstractRepository<Employee, Long> {
+public interface EmployeeRepository extends BaseRepository<Employee, Long> {
 }

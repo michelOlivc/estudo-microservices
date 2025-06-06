@@ -4,5 +4,5 @@ import com.estudo.inventory.entities.Product;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepository extends AbstractRepository<Product, Long> {
+public interface ProductRepository extends BaseRepository<Product, Long> {
 }

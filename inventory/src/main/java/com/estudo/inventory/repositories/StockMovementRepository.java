@@ -4,5 +4,5 @@ import com.estudo.inventory.entities.StockMovement;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StockMovementRepository extends AbstractRepository<StockMovement, Long> {
+public interface StockMovementRepository extends BaseRepository<StockMovement, Long> {
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/positions")
-public class PositionController extends AbstractController<PositionDTO, Long> {
+public class PositionController extends BaseController<PositionDTO, Long> {
 
     public PositionController(PositionService service) {
         super(service);

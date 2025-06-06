@@ -1,7 +1,7 @@
 package com.estudo.organization.services;
 
 import com.estudo.organization.errors.exceptions.EntityNotFoundException;
-import com.estudo.organization.repositories.AbstractRepository;
+import com.estudo.organization.repositories.BaseRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
@@ -13,17 +13,17 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class AbstractService<T, D, ID> {
+public abstract class BaseService<T, D, ID> {
 
     final private Type ENTITY_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     final private Type DTO_TYPE = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 
-    protected AbstractRepository<T, ID> repository;
+    protected BaseRepository<T, ID> repository;
 
     @Autowired
     protected ModelMapper mapper;
 
-    public AbstractService(final AbstractRepository<T, ID> repository) {
+    public BaseService(final BaseRepository<T, ID> repository) {
         this.repository = repository;
     }
 

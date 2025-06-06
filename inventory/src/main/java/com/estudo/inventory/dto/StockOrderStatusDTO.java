@@ -7,9 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderDTO {
-    private Long id;
-    private Long saleId;
-    private String status;
-    private Integer quantity;
+public class StockOrderStatusDTO extends BaseDTO<Long> {
+    private String name;
+    private String description;
 }

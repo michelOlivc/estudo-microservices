@@ -1,7 +1,7 @@
 package com.estudo.sales.services;
 
 import com.estudo.sales.exception.EntityNotFoundException;
-import com.estudo.sales.repositories.AbstractRepository;
+import com.estudo.sales.repositories.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,11 +13,11 @@ import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class AbstractService<T, ID> {
+public abstract class BaseService<T, ID> {
 
-    protected AbstractRepository<T, ID> repository;
+    protected BaseRepository<T, ID> repository;
 
-    public AbstractService(final AbstractRepository<T, ID> repository) {
+    public BaseService(final BaseRepository<T, ID> repository) {
         this.repository = repository;
     }
 

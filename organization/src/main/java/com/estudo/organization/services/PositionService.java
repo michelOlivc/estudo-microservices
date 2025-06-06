@@ -6,7 +6,7 @@ import com.estudo.organization.repositories.PositionRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PositionService extends AbstractService<Position, PositionDTO, Long> {
+public class PositionService extends BaseService<Position, PositionDTO, Long> {
 
     public PositionService(PositionRepository repository) {
         super(repository);

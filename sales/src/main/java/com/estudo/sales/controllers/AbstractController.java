@@ -1,6 +1,6 @@
 package com.estudo.sales.controllers;
 
-import com.estudo.sales.services.AbstractService;
+import com.estudo.sales.services.BaseService;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @NoRepositoryBean
-public abstract class AbstractController<T, ID> {
+public abstract class BaseController<T, ID> {
 
-    protected AbstractService<T, ID> service;
+    protected BaseService<T, ID> service;
 
-    public AbstractController(final AbstractService<T, ID> service) {
+    public BaseController(final BaseService<T, ID> service) {
         this.service = service;
     }
 

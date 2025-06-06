@@ -6,7 +6,7 @@ import com.estudo.inventory.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CategoryService extends AbstractService<Category, CategoryDTO, Long> {
+public class CategoryService extends BaseService<Category, CategoryDTO, Long> {
 
     public CategoryService(CategoryRepository repository) {
         super(repository);

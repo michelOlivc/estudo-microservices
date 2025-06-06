@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/stock-movements")
-public class StockMovementController extends AbstractController<StockMovementDTO, Long> {
+public class StockMovementController extends BaseController<StockMovementDTO, Long> {
 
     public StockMovementController(StockMovementService service) {
         super(service);

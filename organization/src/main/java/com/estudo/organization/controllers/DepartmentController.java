@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("api/departments")
-public class DepartmentController extends AbstractController<DepartmentDTO, Long> {
+public class DepartmentController extends BaseController<DepartmentDTO, Long> {
 
     public DepartmentController(DepartmentService service) {
         super(service);

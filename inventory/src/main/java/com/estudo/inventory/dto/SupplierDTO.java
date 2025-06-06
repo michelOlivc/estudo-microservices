@@ -7,8 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class CategoryDTO extends AuditableDTO<Long> {
+public class SupplierDTO extends AuditableDTO<Long> {
     private String name;
-    private CategoryDTO parent;
-    private boolean active;
+    private String registrationNumber;
 }

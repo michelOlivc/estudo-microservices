@@ -6,7 +6,7 @@ import com.estudo.inventory.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProductService extends AbstractService<Product, ProductDTO, Long> {
+public class ProductService extends BaseService<Product, ProductDTO, Long> {
 
     public ProductService(ProductRepository repository) {
         super(repository);
